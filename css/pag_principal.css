@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-emphasis: none;
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(../img/fondo_rojo.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+button{
+    padding: 10px 20px;
+    width: 300px;
+    height: 100px; 
+    font-size: 20px; 
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #dadada;
+    color: #242323;
+}

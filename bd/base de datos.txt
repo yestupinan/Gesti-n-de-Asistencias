@@ -1,0 +1,65 @@
+rojo: #ad3333
+azul:#003366
+blanco: #DADADA
+
+
+CREATE TABLE Estudiante(
+    codigo INT(15) PRIMARY KEY,
+    nombres VARCHAR(80),
+    apellidos VARCHAR(80),
+    carrera VARCHAR(60),
+    correo_electronico VARCHAR (80)
+);
+
+CREATE TABLE Docente(
+    codigo INT(15) PRIMARY KEY,
+    nombres VARCHAR(80),
+    apellidos VARCHAR(80),
+    correo_electronico VARCHAR (80)
+);
+
+CREATE TABLE Materia(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre_materia VARCHAR(40),
+    docente_codigo INT(15),
+   	FOREIGN KEY (docente_codigo) REFERENCES Docente(codigo),
+    estudiante_codigo INT(15),
+    FOREIGN KEY (estudiante_codigo) REFERENCES Estudiante(codigo)
+);
+
+CREATE TABLE Usuarios(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(50),
+    contrasena VARCHAR(50),
+    Usu_codigo_docente INT(15),
+    FOREIGN KEY (Usu_codigo_docente) REFERENCES Docente(codigo)
+
+);
+
+CREATE TABLE Asistencia(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Materia_id INT (50),
+    FOREIGN KEY (Materia_id) REFERENCES Materia(id),
+    Asistencia_docente_codigo INT(15),
+   	FOREIGN KEY (asistencia_docente_codigo) REFERENCES Docente(codigo),
+    Asistencia_estudiante_codigo INT(15),
+    FOREIGN KEY (asistencia_estudiante_codigo) REFERENCES Estudiante(codigo),
+    FECHA DATE,
+    HORA TIME,
+    Asistio BOOLEAN
+);
+
+INSERT INTO estudiante(codigo, nombres, apellidos, carrera, correo_electronico)
+VALUES (1, 'Henrry sebastian', 'Pulido Jaimes','Comercio Internacional', 'henrry@gmail.com');
+
+INSERT INTO Docente (codigo, nombres, apellidos, correo_electronico)
+VALUES (1, 'Yeimer Emir', 'Estupinan Jaimes', 'yeimer.emir@gmail.com', 'Yestupinan', '123456');
+
+INSERT INTO materia(id, Nombre_materia, docente_codigo, estudiante_codigo)
+VALUES (1,'Calculo Diferencial','1','1');
+
+INSERT INTO usuarios(id, usuario, contrasena, Usu_codigo_docente)
+VALUES(1,'Yestupinan','Yeimer123',1);
+
+SELECT usuario, contrasena FROM usuarios WHERE usuario='Yestupinan' and contrasena='Yeimer123'
+
