@@ -12,7 +12,7 @@
     <div class="container">
     <?php include("php/mostrar_datos.php");?>
         <h1>ESCANER</h1>
-        <h6>ID DE ASISTENCIA: <?php echo $mostrar['id'];?></h>
+        <h6>ID DE ASISTENCIA: <span id="id_asistencia"><?php echo $mostrar['id'];?></span></h6>
         <h6>ID DE MATERIA: <?php echo $mostrar['Materia_id'];?></h6>
         <h6>ID DEL DOCENTE: <?php echo $mostrar['Asistencia_docente_codigo'];?></h6>
         <h6>FECHA: <?php echo $mostrar['FECHA'];?></h6>
@@ -27,12 +27,18 @@
     <script>
         function onScanSuccess(qrCodeMessage) {
             document.getElementById('result').innerText = 'Texto escaneado: ' + qrCodeMessage;
+            let idAsistencia = document.getElementById('id_asistencia').innerText;
+            let data = {
+                    codigo: qrCodeMessage,
+                    id_asistencia: idAsistencia
+                    };
             fetch('php/insertar_asistencia.php', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 },
-                    body: 'codigo=' + encodeURIComponent(qrCodeMessage)
+                    /*body: 'codigo=' + encodeURIComponent(qrCodeMessage)*/
+                    body: JSON.stringify(data)
             })
                 .then(response => response.text())
                 .then(data => {

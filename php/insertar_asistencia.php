@@ -2,12 +2,16 @@
 include("conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener el código QR enviado mediante POST
-    $codigo = mysqli_real_escape_string($conexion, $_POST['codigo']);
+    // Obtener el contenido JSON enviado
+    $input = json_decode(file_get_contents('php://input'), true);
+
+    // Obtener los valores del JSON
+    $codigo = mysqli_real_escape_string($conexion, $input['codigo']);
+    $id_asistencia = mysqli_real_escape_string($conexion, $input['id_asistencia']);
 
     //Consulta de inserción
     $insertar = "INSERT INTO historial (Id_asistencia, Asistencia_estudiante_codigo, FECHA, HORA) 
-                 VALUES (49,'$codigo', CURDATE(), CURTIME())";
+                 VALUES ('$id_asistencia','$codigo', CURDATE(), CURTIME())";
 
     // Ejecutar la consulta
     if (mysqli_query($conexion, $insertar)) {
