@@ -11,9 +11,10 @@
 <body>
     <div class="container">
     <?php include("php/mostrar_datos.php");?>
+
         <h1>ESCANER</h1>
         <h6>ID DE ASISTENCIA: <span id="id_asistencia"><?php echo $mostrar['id'];?></span></h6>
-        <h6>ID DE MATERIA: <?php echo $mostrar['Materia_id'];?></h6>
+        <h6>ID DE MATERIA: <span id="materiaid"><?php echo $mostrar['Materia_id'];?> </span></h6>
         <h6>ID DEL DOCENTE: <?php echo $mostrar['Asistencia_docente_codigo'];?></h6>
         <h6>FECHA: <?php echo $mostrar['FECHA'];?></h6>
         <h6>HORA: <?php echo $mostrar['HORA'];?></h6>
@@ -26,7 +27,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.2.1/html5-qrcode.min.js"></script>
     <script>
         function onScanSuccess(qrCodeMessage) {
-            document.getElementById('result').innerText = 'Texto escaneado: ' + qrCodeMessage;
+            document.getElementById('result').innerText = 'Ultimo estudiante ingresado: ' + qrCodeMessage;
             let idAsistencia = document.getElementById('id_asistencia').innerText;
             let data = {
                     codigo: qrCodeMessage,
