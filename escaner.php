@@ -18,16 +18,29 @@
         <h6>FECHA: <?php echo $mostrar['FECHA'];?></h6>
         <h6>HORA: <?php echo $mostrar['HORA'];?></h6>
         
-
         <div id="reader" width="600px"></div>
         <div id="result">Esperando escaneo...</div>
         
     </div>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.2.1/html5-qrcode.min.js"></script>
     <script>
         function onScanSuccess(qrCodeMessage) {
             document.getElementById('result').innerText = 'Texto escaneado: ' + qrCodeMessage;
+            fetch('php/insertar_asistencia.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                    body: 'codigo=' + encodeURIComponent(qrCodeMessage)
+            })
+                .then(response => response.text())
+                .then(data => {
+                    console.log('Respuesta del servidor:', data);
+                })
+                    .catch(error => {
+                    console.error('Error:', error);
+                });
         }
 
         function onScanError(errorMessage) {
