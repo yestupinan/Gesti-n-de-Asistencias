@@ -18,7 +18,7 @@
         <input type="password" class="input" name="contrasena" placeholder="Contraseña">
 
         <div class="recordar">
-            <a href="recordar_contrase.html">¿Olidaste la contraseña?</a>
+            <a href="recordar_contrase.php">¿Olidaste la contraseña?</a>
         </div>
             
         <input name="btn_ingresar" type="submit" class="btn_1" value="INICIAR SESION">

@@ -33,7 +33,6 @@ CREATE TABLE Usuarios(
     contrasena VARCHAR(50),
     Usu_codigo_docente INT(15),
     FOREIGN KEY (Usu_codigo_docente) REFERENCES Docente(codigo)
-
 );
 
 CREATE TABLE Asistencia(
@@ -49,17 +48,42 @@ CREATE TABLE Asistencia(
     Asistio BOOLEAN
 );
 
+CREATE TABLE historial(
+    Id_asistencia INT(15),
+    FOREIGN KEY (Id_asistencia) REFERENCES asistencia(id),
+    Asistencia_estudiante_codigo INT(15),
+    FOREIGN KEY (asistencia_estudiante_codigo) REFERENCES Estudiante(codigo),
+    FECHA DATE,
+    HORA TIME
+);
+
 INSERT INTO estudiante(codigo, nombres, apellidos, carrera, correo_electronico)
 VALUES (1, 'Henrry sebastian', 'Pulido Jaimes','Comercio Internacional', 'henrry@gmail.com');
 
 INSERT INTO Docente (codigo, nombres, apellidos, correo_electronico)
-VALUES (1, 'Yeimer Emir', 'Estupinan Jaimes', 'yeimer.emir@gmail.com', 'Yestupinan', '123456');
+VALUES (1, 'Yeimer Emir', 'Estupinan Jaimes', 'yeimer.emir@gmail.com');
 
 INSERT INTO materia(id, Nombre_materia, docente_codigo, estudiante_codigo)
 VALUES (1,'Calculo Diferencial','1','1');
+
+INSERT INTO materia(id, Nombre_materia, docente_codigo, estudiante_codigo)
+VALUES (NULL,'Calculo Integral',1,0);
 
 INSERT INTO usuarios(id, usuario, contrasena, Usu_codigo_docente)
 VALUES(1,'Yestupinan','Yeimer123',1);
 
 SELECT usuario, contrasena FROM usuarios WHERE usuario='Yestupinan' and contrasena='Yeimer123'
 
+INSERT INTO asistencia (id, Materia_id, Asistencia_docente_codigo, FECHA, HORA) 
+VALUES (NULL, 1,1, CURDATE(), CURTIME());
+
+INSERT INTO historial(Id_asistencia, Asistencia_estudiante_codigo, FECHA, HORA) 
+VALUES (1,1, CURDATE(), CURTIME());
+
+DELETE FROM asistencia WHERE Materia_id = 3 AND FECHA = '2024-05-22';
+
+
+INSERT INTO historial ()
+VALUES ();
+
+Id_asistencia	Asistencia_estudiante_codigo	FECHA	HORA	

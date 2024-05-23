@@ -16,7 +16,7 @@
         <input type="text" id="usuario" placeholder="Correo electronico">
 
         <input type="submit" class="btn_1" value="RECUPERAR CONTRASEÑA">
-        <a href="index.html" class="boton">VOLVER</a>
+        <a href="index.php" class="boton">VOLVER</a>
         
     </form>
 

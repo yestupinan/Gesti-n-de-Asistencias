@@ -7,7 +7,7 @@
     $consulta = mysqli_query($conexion,"SELECT usuario, contrasena FROM usuarios WHERE usuario='$usuario' and contrasena='$contrasena'");
 
     if(mysqli_num_rows($consulta)>0){
-        header("location:../pag_principal.html");
+        header("location:../pag_principal.php");
         exit;
     }else{
         echo'

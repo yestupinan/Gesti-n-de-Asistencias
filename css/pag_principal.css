@@ -1,35 +1,110 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-emphasis: none;
-    font-family: sans-serif;
-}
 
 body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    height: auto;
     background-image: url(../img/fondo_rojo.jpg);
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-button{
-    padding: 10px 20px;
-    width: 300px;
-    height: 100px; 
-    font-size: 20px; 
-    background-color: #003366;
-    color: #fff;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
+.barra{
+    background: #ad3333;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 0;
 }
 
-button:hover{
-    background-color: #dadada;
-    color: #242323;
+.dropdown-menu{
+    margin: 17px;
+    background: #003366;
+    color: #DADADA;
+    box-shadow: 0 0 10 px rgba(0,0,0,0,568);
+
+}
+
+.menuperfil{
+    color: white;
+}
+
+.menuperfil:hover{
+    background: #23ae6b;
+    box-shadow: 0 0 10 px rgba(0,0,0,0,568);;
+}
+
+.cerrar:hover{
+    background-color: rgba(255, 0, 0, 0.781);
+    box-shadow: 0 0 10 px rgba(0,0,0,0,568);;
+}
+
+.user{
+    font-size: 30px;
+}
+
+/*BARRA LATERAL*/
+
+.barra-lateral{
+    background: #003366;
+    color: #fff
+    min-width: 250px;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.barra-lateral a{
+    color: #DADADA;
+}
+
+/*ESTILOS DEL MENU*/
+
+.barra-lateral .menu a{
+    display: block;
+    padding: 20px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    border-bottom: 1px rgba(255,255,255, .1);
+    border-bottom: 1px solid rgba(255,255,255, .1);
+}
+
+.barra-lateral .menu a:hover{
+    background-color: #ad3333;
+    text-decoration: none;
+}
+
+.barra-lateral .menu{
+    border-top: 5px #fff solid;
+}
+
+.barra-lateral .menu a i{
+    margin-right: 20px;
+}
+
+/*MAIN*/
+
+.main{
+    padding-top: 40px;
+}
+
+.main columna{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/*MEDIAQUERYS (RESPONSIVO)*/
+
+@media screen and (max-width:575px){
+    .barra-lateral{
+        height: auto;
+    }
+    .barra-lateral .menu a{
+        display: inline-block;
+        border-bottom: none;
+    } 
+    .dropdown-menu{
+        margin: 20px -78px 0px;
+    }
+    body{
+        font-size: 16px;
+        overflow: visible;
+    }
+
 }
